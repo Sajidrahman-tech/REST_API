@@ -1,0 +1,34 @@
+<html>
+    <head>
+    <title></title>
+    </head>
+    <body>
+       
+        <!-- <h1>inisde the index</h1>
+	{{range .}}
+        {{.Name}}
+        {{.Password}}
+        {{.Id}}
+    {{end}}          -->
+
+    <table>
+        <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Password</td>
+        
+      </tr>
+        
+          {{ range . }}
+                <tr>
+                    <td>{{ .Id}}</td>
+                    <td>{{ .Name }}</td>
+                    <td>{{ .Password}}</td>
+                   
+                </tr>
+          
+        {{ end }}
+  </table>
+    </body>
+
+</html> 

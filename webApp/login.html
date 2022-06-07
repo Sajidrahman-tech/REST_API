@@ -1,0 +1,45 @@
+<html>
+    <head>
+    <title></title>
+    </head>
+    <body>
+        <form action="/getUser" method="post">
+            Username:<input type="text" name="username">
+            Password:<input type="text" name="password">
+            <input type="submit" value="getUser">
+        </form>
+        
+        <form action="/postUser" method="post">
+            Username:<input type="text" name="username">
+            Password:<input type="text" name="password">
+            <input type="submit" value="postUser">
+        </form>
+        
+        <form action="/deleteUser" method="post">
+            Username:<input type="text" name="username">
+           
+            <input type="submit" value="deleteUser">
+        </form>
+        <form action="/updateUser" method="post">
+            Username:<input type="text" name="username">
+            Password:<input type="text" name="password">
+            <input type="submit" value="updateUser">
+        </form>
+        <form action="/showUser" method="post">
+            <input type="submit" value="showUser">
+        </form>
+        <br>
+        <br>
+        <form action="/validate" method="post">
+            Username:<input type="text" name="username">
+            Password:<input type="text" name="password">
+            <input type="submit" value="login">
+        </form>
+        <form action="/novalidate" method="post">
+            Username:<input type="text" name="username">
+            Password:<input type="text" name="password">
+            <input type="submit" value="login">
+        </form>
+
+    </body>
+</html>
