@@ -48,8 +48,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 
 /////////////-POST user
 func postUser(w http.ResponseWriter, r *http.Request) {
-	// w.Header().Set("Content-Type", "application/json")
-	// w.Write([]byte(`{"mess":"api"}`))
+
 	fmt.Println("inside postUser")
 	Username := r.FormValue("username")
 	Password := r.FormValue("password")
@@ -73,11 +72,6 @@ func postUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(len(Password))
-	// if (len()){
-	// 	dialog.Alert("EMpty Username")
-	// 	http.Redirect(w, r, "/login", 301)
-	// 		 return
-	//  }
 
 	insert, err := db.Prepare("INSERT INTO `users`.`emp` VALUES (?,?,NULL)")
 
@@ -155,7 +149,6 @@ func deleteUser(w http.ResponseWriter, r *http.Request) {
 
 	dialog.Alert("DELETED USER")
 	http.Redirect(w, r, "/login", 301)
-	//t.ExecuteTemplate(w, "index.html", nil)
 	defer db.Close()
 
 }
@@ -178,7 +171,7 @@ func updateUser(w http.ResponseWriter, r *http.Request) {
 	dialog.Alert("Updated USER")
 	defer db.Close()
 	http.Redirect(w, r, "/login", 301)
-	// t.ExecuteTemplate(w, "index.html", nil)
+
 }
 
 ///////////->SHOW USER
@@ -230,7 +223,7 @@ func showUser(w http.ResponseWriter, r *http.Request) {
 ////////->VALIDATE USER
 
 func validate(w http.ResponseWriter, r *http.Request) {
-	//parsedTemplate, _ := template.ParseFiles("success.html")
+
 	fmt.Println("inside validateUser")
 	db := dbConn()
 	fmt.Println("inside validateuser after dbconn")
@@ -282,20 +275,20 @@ func validate(w http.ResponseWriter, r *http.Request) {
 
 ///////////
 func novalidate(w http.ResponseWriter, r *http.Request) {
-	//parsedTemplate, _ := template.ParseFiles("success.html")
+
 	fmt.Println("inside novalidateUser")
 	db := dbConn()
 	fmt.Println("inside novalidateuser after dbconn")
 	Username := r.FormValue("username")
 	Password := r.FormValue("password")
 	valDb, err := db.Prepare("SELECT * FROM emp WHERE name='" + Username + "' AND password='" + Password + "'")
-	//"SELECT * FROM user WHERE username='" + username + "' AND password='" + password + "'"
+
 	if err != nil {
 		// 	panic(err.Error())
 	}
 	fmt.Println("username is:" + Username)
 	fmt.Println("password is:" + Password)
-	//valDb.Exec(Username, Password)
+
 	fmt.Println(valDb)
 	employ := Employee{}
 	var name string
@@ -309,17 +302,6 @@ func novalidate(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Inside errr")
 	fmt.Println("the data name is" + employ.Name)
 	fmt.Println("the data password is" + employ.Password)
-	//fmt.Println("the data id is" + id)
-	//fmt.Println("the data id is" +id)
-	//fmt.Println(valDb)
-	//fmt.Println(len(valDb.))
-	// for valDb.Next() {
-	// 	fmt.Println("the data name is")
-
-	// 	err = valDb.Scan(&name, &password, &id)
-	// 	if err != nil {
-	// 		panic(err.Error())
-	// 	}
 
 	if name == "" {
 		fmt.Println("INVALID USER")
@@ -330,11 +312,7 @@ func novalidate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	dialog.Alert("VALID USER")
-	// errr := parsedTemplate.Execute(w, "")
-	// if errr != nil {
-	// 	fmt.Println("inside the p error")
-	// 	panic(errr.Error())
-	// }
+
 	http.Redirect(w, r, "/login", 301)
 
 	defer valDb.Close()
